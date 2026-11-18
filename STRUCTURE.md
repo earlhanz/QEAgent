@@ -48,8 +48,6 @@ QEAgent/
 ├── docs/
 │   ├── WORKFLOW.md
 │   ├── HOW-TO-User-Guide.docx
-│   ├── CRITIQUE-AND-FIXES.md                 # Earlier review record
-│   ├── review/CLAUDE-REVIEW.md               # Current review record
 │   ├── sampleprojectname/                    # Template only: qe-state.json + header-only workbook
 │   └── <project>/                            # Created by /qe:create
 │       ├── design/                           # Required: sole authority for expected behavior
@@ -71,7 +69,7 @@ QEAgent/
         └── .qe/runs/<run-id>/                # run-summary.json, runner.log, healing handoffs, evidence
 ```
 
-Planned, not present: `mcp/` (QEAgent-owned MCP server source) and `extension/` (installable Gemini CLI extension). `work/` holds earlier maintenance scripts and screenshots; it is not part of the agent.
+Planned, not present: `mcp/` (QEAgent-owned MCP server source) and `extension/` (installable Gemini CLI extension). Local maintenance files (`work/`), review records (`docs/review/`, `docs/CRITIQUE-AND-FIXES.md`), and review prompts are git-ignored and not part of the agent; see `.gitignore`.
 
 ## Configuration notes
 

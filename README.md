@@ -133,10 +133,9 @@ The hook can't see writes made outside Gemini or indirectly by scripts. The vali
 | `.gemini/` | `settings.json` (hooks), `commands/`, `skills/`, `agents/`, `hooks/`, `tools/` (validator and helpers) |
 | [`docs/WORKFLOW.md`](docs/WORKFLOW.md) | Phase prerequisites, gate rules, enforcement boundary |
 | [`docs/HOW-TO-User-Guide.docx`](docs/HOW-TO-User-Guide.docx) | Beginner guide (setup, phases, checkpoints, maintenance, glossary) |
-| [`docs/review/CLAUDE-REVIEW.md`](docs/review/CLAUDE-REVIEW.md) | Latest review: findings, fixes, verification, open owner decisions |
+| [`GEMINI-ADOPTION-PROMPT.md`](GEMINI-ADOPTION-PROMPT.md) | First-session prompt that loads and checks QEAgent in Gemini CLI |
 | `docs/sampleprojectname/` | Template only: starter state and header-only workbook copied by `/qe:create` |
 | [`STRUCTURE.md`](STRUCTURE.md) | Full folder map |
-| `work/` | Earlier maintenance scripts and screenshots; not part of the agent |
 
 Helper usage and limits: [`.gemini/skills/_shared/references/deterministic-tools.md`](.gemini/skills/_shared/references/deterministic-tools.md). `mcp/` and `extension/` are planned and not present.
 
@@ -147,8 +146,7 @@ Helper usage and limits: [`.gemini/skills/_shared/references/deterministic-tools
 - The BeforeTool hook is best-effort and lets actions through if it fails to run (for example, when Gemini is started outside the repository root).
 - `qe-api.js` reads JSON only (no YAML) and does not resolve OpenAPI `$ref`s.
 - API-only scenarios still need an approved manual case before automation.
-
-Open items and verification details are tracked in [`docs/review/CLAUDE-REVIEW.md`](docs/review/CLAUDE-REVIEW.md).
+- No sample design, strategy, or tests are included; the first real project is the end-to-end test.
 
 ## Maintaining QEAgent
 

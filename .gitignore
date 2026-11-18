@@ -12,3 +12,10 @@ node_modules/
 
 # Per-run execution evidence (logs, traces, screenshots) can contain environment details
 output/*/.qe/runs/
+
+# Not part of the agent: local maintenance, review records, and inspection dumps
+work/
+docs/review/
+docs/CRITIQUE-AND-FIXES.md
+*.inspect.ndjson
+*-REVIEW-PROMPT.md
