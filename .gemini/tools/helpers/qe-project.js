@@ -83,7 +83,9 @@ if (action === 'init-state') {
   process.exit(0);
 }
 
-if (!fs.existsSync(outputRoot)) fail('Run this command from the QEAgent project root (output/ is missing).');
+// docs/ already proved this is the QEAgent root; a fresh git clone has no empty output/ folder.
+rejectSymlinkPath(outputRoot);
+if (!fs.existsSync(outputRoot)) fs.mkdirSync(outputRoot);
 if (fs.existsSync(docsProject) || fs.existsSync(outputProject)) fail('A docs/ or output/ folder with this project name already exists. Nothing was changed; inspect existing folders and use init-state only if state alone is missing.');
 
 const state = freshState();
