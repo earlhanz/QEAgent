@@ -1,0 +1,6 @@
+description = "Apply human feedback to the manual-test phase and return it to review."
+prompt = """
+The first argument is the project slug; the remaining text is the user's feedback. Validate that the slug is a single folder name (letters, numbers, underscore, hyphen). Reopen the manual gate with only the slug, never the feedback text: `node .gemini/tools/helpers/qe-state.js reopen <project> manual_tests manual-feedback`. This clears the manual approval, prepared version, and reviewer evidence, and resets the automation gate if it was in review or approved.
+
+Apply the feedback only to the selected project's manual test cases, manual test data, and their traceability rows. Do not change approved analysis artifacts; if the feedback requires a strategy or scenario change, stop and tell the user to use `/analysis:feedback <project> <comment>`. After the updates, rerun `manual-test-reviewer`. It saves `docs/<project>/reviews/manual-test-review.md` and records its status. Then run `node .gemini/tools/qe-workflow.js prepare manual_tests <project>` only when the reviewer is ready. Stop for human review. Do not claim approval.
+"""

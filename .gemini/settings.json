@@ -1,0 +1,31 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "name": "qe-project-selection-reminder",
+            "type": "command",
+            "command": "node .gemini/hooks/session-start.js",
+            "timeout": 5000,
+            "description": "Show project-scoped QEAgent start/continue commands without loading project files."
+          }
+        ]
+      }
+    ],
+    "BeforeTool": [
+      {
+        "matcher": "write_file|replace|run_shell_command",
+        "hooks": [
+          {
+            "name": "qe-phase-gate",
+            "type": "command",
+            "command": "node .gemini/hooks/phase-gate.js",
+            "timeout": 5000,
+            "description": "Block direct phase approval edits and downstream output writes before required approvals."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+description = "Create the standard QEAgent folders and project state for a new project."
+prompt = """
+Create a QEAgent project using the deterministic initializer. The project name must be one simple folder slug, not a path. Run: !{node .gemini/tools/helpers/qe-project.js create {{args}}}
+If successful, tell the user where to put design, user stories, and requirements. Then ask them to add those documents and run /qe:start {{args}} before /analysis:start {{args}}. Do not analyze other projects or claim sources were read.
+"""

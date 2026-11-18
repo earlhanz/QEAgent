@@ -1,0 +1,5 @@
+description = "Validate and approve reviewed automation for a project."
+prompt = """
+The user explicitly approves automation for project `{{args}}`. Run: !{node .gemini/tools/qe-workflow.js approve automation {{args}}}
+If validation fails, report unmet prerequisites and do not claim approval. If successful, state that the presented automation artifact version is approved. Never create service virtualization in this approval command. The validator requires the virtualization decision to be recorded (`automation_service` completed or not_applicable). Any accepted virtualization must already be in the reviewed, fingerprinted automation phase.
+"""

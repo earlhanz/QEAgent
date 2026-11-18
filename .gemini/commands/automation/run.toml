@@ -1,0 +1,8 @@
+description = "Run approved Playwright tests for a project and return a compact execution summary."
+prompt = """
+Execute the approved Playwright test scope for project `{{args}}` using the `playwright-test-executor` subagent and the `automated-test-execution` skill.
+
+Treat the first argument as the project slug and any remaining argument as an optional spec or tag scope. Do not scan other projects. Before running, confirm the approval is current with `node .gemini/tools/qe-workflow.js check-approved automation <project>`. If it fails, report the unmet prerequisites and run nothing unless the user explicitly asks for a labeled pre-approval diagnostic run. Use the project's configured Playwright command.
+
+If the executor classifies a failure as a test-script problem, immediately invoke `heal-playwright-automation` with the run's `healing-handoff.json`. Then invoke `playwright-test-executor` again on only the affected spec. Allow at most two heal-and-retest cycles per failure. Never route genuine application bugs, environment problems, or unknown failures to healing. Those stay visible as failures. Record the run with `qe-state.js execution`. Return status and counts (initial and post-heal), the `run-summary.json` path, failure classifications, healed tests with changed files, remaining defects, and blockers. Note that any healing change invalidated the automation approval.
+"""

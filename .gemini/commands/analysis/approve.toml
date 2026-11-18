@@ -1,0 +1,6 @@
+description = "Validate and approve the current QE analysis version for a project."
+prompt = """
+The user explicitly approves analysis for project `{{args}}`. Run the deterministic validator/recorder: !{node .gemini/tools/qe-workflow.js approve analysis {{args}}}
+
+If the command returns an error, show its unmet prerequisites and do not claim approval. If successful, report the recorded artifact version and that manual-test generation is now unlocked. Do not generate tests in this command.
+"""

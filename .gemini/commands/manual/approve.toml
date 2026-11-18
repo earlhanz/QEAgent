@@ -1,0 +1,6 @@
+description = "Validate and approve reviewed manual tests for a project."
+prompt = """
+The user explicitly approves manual tests for project `{{args}}`. Run the deterministic validator/recorder: !{node .gemini/tools/qe-workflow.js approve manual_tests {{args}}}
+
+If the command returns an error, show its unmet prerequisites and do not claim approval. If successful, report the recorded artifact version and that automation is now unlocked. Do not start implementation in this command.
+"""

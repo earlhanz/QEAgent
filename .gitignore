@@ -1,0 +1,14 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+~$*.docx
+~$*.xlsx
+
+# Node
+node_modules/
+
+# Interrupted helper writes (helpers write <file>.tmp-<pid> then rename)
+*.tmp-*
+
+# Per-run execution evidence (logs, traces, screenshots) can contain environment details
+output/*/.qe/runs/

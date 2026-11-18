@@ -1,0 +1,6 @@
+description = "Apply human feedback to the analysis phase and return it to review."
+prompt = """
+The first argument is the project slug; the remaining text is the user's feedback. Validate that the slug is a single folder name (letters, numbers, underscore, hyphen). Reopen the analysis gate with only the slug, never the feedback text: `node .gemini/tools/helpers/qe-state.js reopen <project> analysis analysis-feedback`. This clears the analysis approval and prepared version, and resets the manual and automation gates if they were in review or approved, because their work was derived from this analysis.
+
+Use `qe-architect` to apply the feedback to only the selected project's strategy, `strategy/test-scenarios.json`, and scenario traceability. Expected behavior must still come from the design documents. If the feedback asks for behavior the design does not contain, record it as a gap or question instead of adding it. Then run `node .gemini/tools/qe-workflow.js prepare analysis <project>`. Present what changed, the new version, and any downstream work that now needs revision. Stop for human review. Do not claim approval.
+"""

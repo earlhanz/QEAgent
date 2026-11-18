@@ -1,0 +1,10 @@
+description = "Start QE work scoped to one project and load only its relevant context."
+prompt = """
+Start a QEAgent work session for project `{{args}}`.
+
+Treat the project argument as a single folder name under `docs/`, not as a path. Reject path separators, `..`, absolute paths, or an empty project name; ask the user to provide a valid project slug. Do not search, list, or load other project folders.
+
+Read only `docs/{{args}}/qe-state.json` and task-relevant material. Read the project state guardrails and schema at `.gemini/skills/_shared/references/project-state-guardrails.md` and `project-state-schema.md`. First reconcile checkpoint task markers against strategy/artifact status and linked artifacts: remove markers only for tasks verified completed, cancelled, superseded, or stale; do not infer completion from a marker alone. If pruning changes the checkpoint, replace it with `qe-state.js checkpoint` and the bounded JSON payload; do not edit the state file directly. For a broad strategy task, inspect only this project's `design/`, `user-story/`, and `requirements/` folders as applicable. For specific work, prefer identified files over scanning the project. If state is missing and this is an existing docs/<project>/ folder, run `node .gemini/tools/helpers/qe-project.js init-state <project>`; for a brand-new project use `/qe:create <project>`. If malformed, do not silently replace it.
+
+Briefly report the selected project, current phase/status, checkpoint markers retained or pruned, relevant blockers or open questions, and ask what QE work the user wants to do. Do not claim sources were reviewed unless read. Do not change project status just because this command was run.
+"""

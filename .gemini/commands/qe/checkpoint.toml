@@ -1,0 +1,10 @@
+description = "Save a compact, current QE project checkpoint for restart recovery."
+prompt = """
+Save a compact checkpoint for project `{{args}}` to `docs/{{args}}/qe-state.json`.
+
+Treat the argument as one project folder name under docs/. Reject empty values, path separators, `..`, or absolute paths. Do not inspect other projects. Read and validate the project's existing state and the shared state schema and guardrails. Inspect only artifacts relevant to the current conversation/task to establish what is actually complete or still in progress.
+
+Replace the existing checkpoint snapshot; do not append history. Use `.gemini/tools/helpers/qe-state.js checkpoint <project> qe-checkpoint` with the compact JSON sent on stdin. Use the platform-specific pipeline example in `deterministic-tools.md`; never write `qe-state.json` with a generic text/file tool. Keep at most 5 task markers in each list and under 2,000 combined characters. Each work_in_progress item is an object with stable task_id, concise task, status `in_progress` or `blocked`, and optional artifact_path. Each next_actions item has task_id, task, status `pending` or `blocked`, and optional artifact_path. Remove completed, cancelled, superseded, and stale items. Record active work and immediate next actions only. Do not copy transcript content or large artifact text. Do not mark work complete without verified artifact/evidence. Preserve all unrelated state fields and user-authored data, the helper sets saved_at to an ISO 8601 timestamp and saved_by to the actor `qe-checkpoint`, rejects unknown fields and artifact paths outside this project, then read a compact state summary and verify the checkpoint fields through the helper.
+
+If the project folder exists but state is missing, initialize only that file with `node .gemini/tools/helpers/qe-project.js init-state <project>`; for a new project, use `/qe:create <project>`. If malformed or contradictory, report the problem instead of silently resetting it. Report the checkpoint path and the active items saved.
+"""

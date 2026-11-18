@@ -1,0 +1,12 @@
+{
+  "fields": {
+    "id": { "type": "id", "prefix": "CASE" },
+    "email": { "type": "email" },
+    "status": { "type": "enum", "values": ["active", "pending", "disabled"] },
+    "quantity": { "type": "integer", "min": 1, "max": 50 },
+    "total": { "type": "number", "min": 0, "max": 5000, "scale": 2 },
+    "created_on": { "type": "date", "from": "2024-01-01", "to": "2025-12-31" },
+    "verified": { "type": "boolean" },
+    "comment": { "type": "string", "values": ["standard case", "boundary case", "negative case"] }
+  }
+}

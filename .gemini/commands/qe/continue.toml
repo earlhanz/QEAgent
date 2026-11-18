@@ -1,0 +1,10 @@
+description = "Resume QE work from one project's state and relevant artifacts."
+prompt = """
+Continue QEAgent work for project `{{args}}`.
+
+Treat the project argument as a single folder name under `docs/`, not as a path. Reject path separators, `..`, absolute paths, or an empty project name; ask the user to provide a valid project slug. Do not search, list, or load other project folders.
+
+Read `docs/{{args}}/qe-state.json` and the shared project-state guardrails/schema at `.gemini/skills/_shared/references/project-state-guardrails.md` and `project-state-schema.md`. Then load only the specific existing strategy, artifact, or source files needed to continue the recorded work. Do not recursively load the project folder or repeat discovery across unrelated source directories. If the state file is missing, initialize it only through `node .gemini/tools/helpers/qe-project.js init-state <project>` when the docs folder exists; if malformed or conflicting with artifacts, explain the issue and reconcile from evidence without inventing progress. Update the state only when work performed in this turn changes project state.
+
+Reconcile checkpoint task markers against authoritative project statuses and linked artifacts. Remove entries only when their completion/cancellation/staleness is verified. Summarize the last recorded phase, active task markers, relevant artifact statuses, open questions, and blockers. Recommend the next project-specific action, but do not assume approval for implementation or expand the user's scope.
+"""

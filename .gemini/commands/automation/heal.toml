@@ -1,0 +1,6 @@
+description = "Diagnose and surgically heal an existing failing Playwright TypeScript test."
+prompt = """
+Diagnose the failing Playwright test for project `{{args}}`.
+
+Treat the first argument as the project folder name under `docs/` and the remaining argument, if supplied, as the failing spec path. Do not scan other project folders. Ask for the failing command output/stack trace if it is not included in the request. Load the `heal-playwright-automation` skill and follow it strictly: classify before editing, inspect the spec and linked Page Object/Component/Fixture plus trace/DOM evidence where available, and make only minimal test-code fixes. If evidence indicates a genuine application bug, stop and report reproduction details without modifying tests or assertions to make the failure pass. If you change any test code, invalidate the automation approval with `node .gemini/tools/helpers/qe-state.js invalidate <project> automation heal-playwright-automation` and write `healing-result.json` in the run folder when one exists. Provide `npx playwright test <file> --repeat-each=3` as the stability verification command and report whether it was actually run.
+"""

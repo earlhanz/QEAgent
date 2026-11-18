@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "project_id": "sampleprojectname",
+  "project_status": "not_started",
+  "current_phase": "analysis",
+  "phase_gate": {
+    "analysis": { "status": "not_started", "artifact_version": null, "reviewer_status": "not_reviewed", "reviewed_artifact_version": null, "review_evidence": null, "review_evidence_sha256": null, "approval": null, "feedback": [] },
+    "manual_tests": { "status": "not_started", "artifact_version": null, "reviewer_status": "not_reviewed", "reviewed_artifact_version": null, "review_evidence": null, "review_evidence_sha256": null, "approval": null, "feedback": [] },
+    "automation": { "status": "not_started", "artifact_version": null, "reviewer_status": "not_reviewed", "reviewed_artifact_version": null, "review_evidence": null, "review_evidence_sha256": null, "approval": null, "feedback": [] }
+  },
+  "last_updated": null,
+  "updated_by_skill": null,
+  "checkpoint": {
+    "saved_at": null,
+    "saved_by": null,
+    "work_in_progress": [],
+    "next_actions": []
+  },
+  "sources_reviewed": [],
+  "strategy": {
+    "status": "not_started",
+    "path": "docs/sampleprojectname/strategy/QE-strategy.md",
+    "last_updated": null
+  },
+  "artifacts": {
+    "qe_strategy": { "status": "not_started", "path": "docs/sampleprojectname/strategy/QE-strategy.md" },
+    "test_scenarios": { "status": "not_started", "path": "docs/sampleprojectname/strategy/test-scenarios.json" },
+    "manual_tests": { "status": "not_started", "path": "output/sampleprojectname/manualtests/" },
+    "test_data": { "status": "not_started", "path": "output/sampleprojectname/testdata/" },
+    "automation": { "status": "not_started", "path": "output/sampleprojectname/automated tests/" },
+    "automation_service": { "status": "not_started", "path": "output/sampleprojectname/automationservice/" },
+    "execution": { "status": "not_started", "path": null, "last_run_at": null, "summary": null },
+    "traceability": { "status": "not_started", "path": "docs/sampleprojectname/traceability-matrix.xlsx" }
+  },
+  "decisions": [],
+  "open_questions": [],
+  "risks_and_blockers": [],
+  "notes": []
+}
